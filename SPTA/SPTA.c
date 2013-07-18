@@ -2,8 +2,8 @@
  * Safe-Point Thinning Algorithm (SPTA)
  * Reference: Naccache, N.J.; Shinghal, Rajjan, "SPTA: A proposed algorithm for thinning binary patterns," Systems, Man and Cybernetics, IEEE Transactions on , vol.SMC-14, no.3, pp.409,418, May-June 1984
  * URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6313233&isnumber=6313228
- * Input file: letter.e 
- * Output file: letter_spta.e
+ * Input file: letter.txt
+ * Output file: letter_spta.txt
  */
  
 #include <stdio.h>
@@ -32,7 +32,7 @@ int main(void) {
 
 	//Input letter pixels into array
 	//0 for dark points, -CHAR_MAX for white points
-	letter = fopen("letter.e", "rb");
+	letter = fopen("letter.txt", "rb");
 	for(j=0; j<COL; j++)
 		e[0][j] = -CHAR_MAX;	//Pad top row with white points
     for(i=1; i<ROW; i++)
@@ -62,7 +62,7 @@ int main(void) {
 	} while(flags1 || flags2);	//Check if there are more to be flagged
 
 	//Output thinned image onto file
-	letter_spta = fopen("letter_spta.e", "wb");
+	letter_spta = fopen("letter_spta.txt", "wb");
 	for(i=1; i<ROW; i++)
 	{
 		for(j=0; j<COL; j++)
